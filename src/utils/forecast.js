@@ -8,7 +8,8 @@ const forecast = (latitude, longitude, callback) => {
         } else if (body.error) {
             callback(body.error, undefined);
         } else {
-            callback(undefined, body.hourly.summary + ' It\'s currently ' + body.currently.temperature + ' degrees out. There\'s a ' + body.currently.precipProbability + '% chance of rain.');
+            const forcastMsg = body.currently.summary + ' It\'s currently ' + body.currently.temperature + ' degrees out. There\'s a ' + body.currently.precipProbability + '% chance of rain. Current pressure: ' + body.currently.pressure;
+            callback(undefined, forcastMsg);
         }
     });
 };
